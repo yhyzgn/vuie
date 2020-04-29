@@ -1,8 +1,12 @@
+import './style/less/index.less'
+
 import Swiper from '@/swiper'
+import Tabs from '@/tabs'
 import TabLayout from '@/tab-layout'
 
 const components = [
   Swiper,
+  Tabs,
   TabLayout
 ]
 

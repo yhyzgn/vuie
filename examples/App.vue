@@ -1,15 +1,19 @@
 <template>
   <div id="app">
-    <swiper></swiper>
+    <!-- <ExTabs></ExTabs> -->
+    <!-- <ExSwiper></ExSwiper> -->
+    <ExTabLayout></ExTabLayout>
   </div>
 </template>
 
 <script>
-import Swiper from '#/Swiper'
+import ExSwiper from '#/Swiper'
+import ExTabs from '#/Tabs'
+import ExTabLayout from '#/TabLayout'
 
 export default {
   name: 'App',
-  components: { Swiper }
+  components: { ExSwiper, ExTabs, ExTabLayout }
 }
 </script>
 

@@ -28,7 +28,7 @@ export default {
   data () {
     return {
       actived: this.active,
-      slideName: 'forward'
+      slideName: 'slide-in-left'
     }
   },
   watch: {
@@ -41,10 +41,7 @@ export default {
   },
   methods: {
     slideTo (position) {
-      if (position === this.actived) {
-        return
-      }
-      this.slideName = position > this.actived ? 'forward' : 'backward'
+      this.slideName = position > this.actived ? 'slide-in-right' : 'slide-in-left'
       this.actived = position
       this.$emit('changed', this.actived)
     }
@@ -54,9 +51,6 @@ export default {
 
 <style lang="less" scoped>
 .vuie-swiper-container {
-  @duration: 0.3s;
-
-  background: gray;
   .swiper-sliders {
     position: relative;
     overflow: hidden;
@@ -73,101 +67,6 @@ export default {
         height: 100%;
       }
     }
-    .forward-enter,
-    .backward-leave-to {
-      transform: translateX(100%);
-    }
-    .forward-leave-to,
-    .backward-enter {
-      transform: translateX(-100%);
-    }
-    .forward-enter-active {
-      animation: slide-in-right @duration ease;
-    }
-
-    .forward-leave-active {
-      animation: slide-out-left @duration ease;
-    }
-
-    .backward-enter-active {
-      animation: slide-in-left @duration ease;
-    }
-
-    .backward-leave-active {
-      animation: slide-out-right @duration ease;
-    }
-  }
-}
-
-@keyframes slide-in-right {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes slide-in-right {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes slide-in-left {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-out-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@-webkit-keyframes slide-out-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slide-out-right {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@-webkit-keyframes slide-out-right {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
   }
 }
 </style>

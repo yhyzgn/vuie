@@ -1,49 +1,39 @@
 <template>
-  <div class="vuie-tab-layout-container">
+  <div class="example-tab-layout-container">
     <div class="tab-layout">
-      <div class="tabs">
-        <tabs :tabs="tabs" :active="actived" @changed="onChanged"></tabs>
-      </div>
-      <div class="pages">
-        <swiper class="swiper" :total="tabs.length" :active="actived">
-          <template v-slot:slider="slider">
-            <slot name="slider" :index="slider.index"></slot>
-          </template>
-        </swiper>
-      </div>
+      <tab-layout :tabs="tabs" :active="actived">
+        <template v-slot:slider="slider">
+          <div class="slider-item" :style="style(slider.index)">{{ slider.index }}</div>
+        </template>
+      </tab-layout>
     </div>
   </div>
 </template>
 
 <script>
+const colors = ['red', 'orange', '#843900', 'green', '#5c7a29', 'blue', 'purple']
+
 export default {
-  name: 'TabLayout',
-  props: {
-    tabs: {
-      type: Array,
-      default: () => []
-    },
-    active: {
-      type: Number,
-      default: 0
-    }
-  },
+  name: 'ExTabLayout',
   data () {
     return {
+      tabs: ['首页', '新闻页', '狗带地点', '首页', '新闻页', '狗带地点', '狗带地点'],
       actived: 0
     }
   },
   methods: {
+    style (index) {
+      return `background: ${colors[index]};`
+    },
     onChanged (index) {
       this.actived = index
-      this.$emit('changed', this.actived)
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.vuie-tab-layout-container {
+.example-tab-layout-container {
   width: 100%;
   height: 100%;
   .tab-layout {

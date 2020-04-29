@@ -13,12 +13,10 @@
 </template>
 
 <script>
-import swiper from '@/swiper'
 const colors = ['red', 'orange', '#843900', 'green', '#5c7a29', 'blue', 'purple']
 
 export default {
-  name: 'Swiper',
-  components: { swiper },
+  name: 'ExSwiper',
   data () {
     return {
       total: 7,
