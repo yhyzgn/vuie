@@ -4,7 +4,7 @@
       <li
         v-for="(tab, index) in tabs"
         :key="index"
-        :class="tabClass ? tabClass : ''"
+        :class="className(index)"
         @click="tabTo(index)"
       >{{ tab }}</li>
     </ul>
@@ -61,6 +61,10 @@ export default {
       this.$emit('changed', this.actived)
       this.updateIndicator()
     },
+    className (index){
+      const tabClass = this.tabClass ? this.tabClass + ' ' : ''
+      return tabClass + (index === this.actived ? 'is-actived' : '')
+    },
     updateIndicator () {
       const indicator = this.$refs.indicator
       const tab = this.$.get('li', this.actived)
@@ -86,6 +90,9 @@ export default {
       padding: 10px 0;
       margin: 0 12px;
       cursor: pointer;
+    }
+    li.is-actived {
+      color: aquamarine;
     }
   }
   .divider {
