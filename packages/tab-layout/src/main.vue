@@ -2,7 +2,14 @@
   <div class="vuie-tab-layout-container">
     <div class="tab-layout">
       <div class="tabs">
-        <tabs :tabs="tabs" :active="actived" @changed="onChanged"></tabs>
+        <tabs
+          :tabs="tabs"
+          :active="actived"
+          :tabClass="tabClass"
+          :indicatorHeight="indicatorHeight"
+          :indicatorColor="indicatorColor"
+          @changed="onChanged"
+        ></tabs>
       </div>
       <div class="pages">
         <swiper class="swiper" :total="tabs.length" :active="actived">
@@ -26,6 +33,18 @@ export default {
     active: {
       type: Number,
       default: 0
+    },
+    tabClass: {
+      type: String,
+      default: ''
+    },
+    indicatorHeight: {
+      type: String,
+      default: '4px'
+    },
+    indicatorColor: {
+      type: String,
+      default: 'rgb(45, 212, 162)'
     }
   },
   data () {
