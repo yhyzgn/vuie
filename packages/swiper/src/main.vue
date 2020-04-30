@@ -1,11 +1,12 @@
 <template>
   <div class="vuie-swiper-container">
-    <ul ref="ul" class="swiper-sliders">
+    <ul :ref="`swiper-${name}`" class="swiper-sliders">
       <transition-group tag="ul" :name="slideName">
         <li
           class="swiper-slider"
           v-for="(item, index) in total"
           :key="item"
+          :ref="`swiper-${name}-li-${index}`"
           v-show="index === actived"
         >
           <div class="slider">
@@ -28,6 +29,10 @@ export default {
     active: {
       type: Number,
       default: 0
+    },
+    name: {
+      type: String,
+      default: ''
     }
   },
   data () {

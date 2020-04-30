@@ -1,10 +1,11 @@
 <template>
   <div class="vuie-tabs-container">
-    <ul class="no-select">
+    <ul :ref="`tabs-${name}`" class="no-select">
       <li
         v-for="(tab, index) in tabs"
         :key="index"
         :class="className(index)"
+        :ref="`tabs-${name}-li-${index}`"
         @click="tabTo(index)"
       >{{ tab }}</li>
     </ul>
@@ -29,6 +30,10 @@ export default {
       type: Number,
       default: 0
     },
+    name: {
+      type: String,
+      default: ''
+    },
     tabClass: {
       type: String,
       default: ''
@@ -44,6 +49,7 @@ export default {
   },
   data () {
     return {
+      inited: false,
       actived: this.active,
     }
   },
@@ -53,21 +59,27 @@ export default {
     }
   },
   mounted () {
-    this.tabTo(this.actived)
+    setTimeout(() => {
+      this.tabTo(this.actived)
+    }, 400)
   },
   methods: {
     tabTo (index) {
+      if (this.inited && this.actived === index) {
+        return
+      }
+      this.inited = true
       this.actived = index
       this.$emit('changed', this.actived)
       this.updateIndicator()
     },
-    className (index){
+    className (index) {
       const tabClass = this.tabClass ? this.tabClass + ' ' : ''
       return tabClass + (index === this.actived ? 'is-actived' : '')
     },
     updateIndicator () {
       const indicator = this.$refs.indicator
-      const tab = this.$.get('li', this.actived)
+      const tab = this.$refs[`tabs-${this.name}-li-${this.actived}`][0]
       const margin = parseInt(this.$.css(tab, 'marginLeft'))
       this.$.animate(indicator, {
         width: (tab.clientWidth + margin * 2),

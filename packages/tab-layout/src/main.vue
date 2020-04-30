@@ -8,11 +8,12 @@
           :tabClass="tabClass"
           :indicatorHeight="indicatorHeight"
           :indicatorColor="indicatorColor"
+          name="tab-layout"
           @changed="onChanged"
         ></tabs>
       </div>
       <div class="pages">
-        <swiper class="swiper" :total="tabs.length" :active="actived">
+        <swiper class="swiper" :total="tabs.length" :active="actived" name="tab-layout">
           <template v-slot:slider="slider">
             <slot name="slider" :index="slider.index"></slot>
           </template>
