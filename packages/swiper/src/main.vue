@@ -61,6 +61,7 @@ export default {
     height: 100%;
     white-space: nowrap;
     position: relative;
+    overflow: hidden;
     .swiper-slider {
       width: 100%;
       height: 100%;
