@@ -17,7 +17,7 @@ export default {
   name: 'ExTabLayout',
   data () {
     return {
-      tabs: ['首页', '新闻页', '狗带地点', '首页', '新闻页', '狗带地点', '狗带地点'],
+      tabs: ['首页', '新闻页', '狗带地点'],
       actived: 0
     }
   },
@@ -34,8 +34,8 @@ export default {
 
 <style lang="less" scoped>
 .example-tab-layout-container {
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 500px;
   .tab-layout {
     width: 100%;
     height: 100%;

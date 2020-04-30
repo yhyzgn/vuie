@@ -1,8 +1,10 @@
 import './style/less/index.less'
 
-import Swiper from '@/swiper'
-import Tabs from '@/tabs'
-import TabLayout from '@/tab-layout'
+import dom from './dom'
+
+import Swiper from '../packages/swiper'
+import Tabs from '../packages/tabs'
+import TabLayout from '../packages/tab-layout'
 
 const components = [
   Swiper,
@@ -11,6 +13,14 @@ const components = [
 ]
 
 const install = function (Vue, opts = {}) {
+  if (install.installed) {
+    return
+  }
+  install.installed = true
+
+  // dom
+  Vue.prototype.$ = Vue.prototype.dom = dom
+
   components.forEach(component => {
     Vue.component(component.name, component)
   })

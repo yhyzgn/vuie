@@ -1,17 +1,21 @@
 {
   "include": [
+    "./src/**/*",
     "./packages/**/*",
-    "./src/**/*"
+    "./examples/**/*",
   ],
   "compilerOptions": {
     "target": "ES6",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
+      "vuie/*": [
+        "./src/*"
+      ],
+      "pkgs/*": [
         "./packages/*"
       ],
-      "#/*": [
-        "./src/*"
+      "exps/*": [
+        "./examples/*"
       ]
     }
   }

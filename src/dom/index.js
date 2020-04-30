@@ -53,7 +53,6 @@ class DomSelector {
             start[key] = parseInt(this.css(el, key))
         }
     }
-    console.log(start)
     //将时间划分为100份
     var space = time / 100
     var deg = 0

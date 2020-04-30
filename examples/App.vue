@@ -7,13 +7,16 @@
 </template>
 
 <script>
-import ExSwiper from '#/Swiper'
-import ExTabs from '#/Tabs'
-import ExTabLayout from '#/TabLayout'
+import ExSwiper from 'exps/components/Swiper'
+import ExTabs from 'exps/components/Tabs'
+import ExTabLayout from 'exps/components/TabLayout'
 
 export default {
   name: 'App',
-  components: { ExSwiper, ExTabs, ExTabLayout }
+  components: { ExSwiper, ExTabs, ExTabLayout },
+  mounted (){
+    console.log(this.$)
+  }
 }
 </script>
 

@@ -1,16 +1,23 @@
 <template>
   <div class="vuie-tabs-container">
     <ul>
-      <li v-for="(tab, index) in tabs" :key="index" @click="tabTo(index)">{{ tab }}</li>
+      <li
+        v-for="(tab, index) in tabs"
+        :key="index"
+        :class="tabClass ? tabClass : ''"
+        @click="tabTo(index)"
+      >{{ tab }}</li>
     </ul>
     <div class="line-horizontal divider" />
-    <div ref="indicator" class="indicator" />
+    <div
+      ref="indicator"
+      class="indicator"
+      :style="`height: ${indicatorHeight}; background: ${indicatorColor};`"
+    />
   </div>
 </template>
 
 <script>
-import dom from 'vuie/dom'
-
 export default {
   name: 'Tabs',
   props: {
@@ -21,6 +28,18 @@ export default {
     active: {
       type: Number,
       default: 0
+    },
+    tabClass: {
+      type: String,
+      default: ''
+    },
+    indicatorHeight: {
+      type: String,
+      default: '4px'
+    },
+    indicatorColor: {
+      type: String,
+      default: 'rgb(45, 212, 162)'
     }
   },
   data () {
@@ -44,13 +63,13 @@ export default {
     },
     updateIndicator () {
       const indicator = this.$refs.indicator
-      const tab = dom.get('li', this.actived)
-      const margin = parseInt(dom.css(tab, 'marginLeft'))
+      const tab = this.$.get('li', this.actived)
+      const margin = parseInt(this.$.css(tab, 'marginLeft'))
       const left = `${tab.offsetLeft - margin}px`
-      dom.animate(indicator, {
+      this.$.animate(indicator, {
         width: (tab.clientWidth + margin * 2),
         left: tab.offsetLeft - margin
-      })
+      }, 300)
     }
   }
 }
@@ -61,7 +80,7 @@ export default {
   position: relative;
   ul {
     white-space: nowrap;
-    overflow: scroll;
+    overflow: hidden;
     li {
       display: inline-block;
       padding: 10px 0;
@@ -76,11 +95,9 @@ export default {
   }
   .indicator {
     width: 0;
-    height: 4px;
     position: absolute;
     bottom: 0;
     left: 0;
-    background: greenyellow;
   }
 }
 </style>

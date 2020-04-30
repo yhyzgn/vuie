@@ -18,8 +18,8 @@ module.exports = {
       .loader('babel-loader')
 
     config.resolve.alias
-      .set('vuie', path.join(__dirname, './', 'src'))
-      .set('@', path.join(__dirname, './', 'packages'))
-      .set('#', path.join(__dirname, './', 'examples/components'))
+      .set('vuie', path.resolve(__dirname, './src'))
+      .set('pkgs', path.resolve(__dirname, './packages'))
+      .set('exps', path.resolve(__dirname, './examples'))
   }
 }
