@@ -14,9 +14,6 @@ import ExTabLayout from 'exps/components/TabLayout'
 export default {
   name: 'App',
   components: { ExSwiper, ExTabs, ExTabLayout },
-  mounted (){
-    console.log(this.$)
-  }
 }
 </script>
 

@@ -1,14 +1,19 @@
 <template>
-  <div class="vuie-swiper-container" ref="vuie-swiper-container">
-    <div class="swiper-sliders">
-      <div class="swiper-slider" v-for="(item, index) in total" :key="index">
-        <transition :name="slideName">
-          <div class="slider-item" v-show="index === actived">
+  <div class="vuie-swiper-container">
+    <ul ref="ul" class="swiper-sliders">
+      <transition-group tag="ul" :name="slideName">
+        <li
+          class="swiper-slider"
+          v-for="(item, index) in total"
+          :key="item"
+          v-show="index === actived"
+        >
+          <div class="slider">
             <slot class="slider-slot" name="slider" :index="index">no slot implementation</slot>
           </div>
-        </transition>
-      </div>
-    </div>
+        </li>
+      </transition-group>
+    </ul>
   </div>
 </template>
 
@@ -52,17 +57,16 @@ export default {
 <style lang="less" scoped>
 .vuie-swiper-container {
   .swiper-sliders {
-    position: relative;
-    overflow: hidden;
     width: 100%;
     height: 100%;
+    white-space: nowrap;
+    position: relative;
     .swiper-slider {
       width: 100%;
       height: 100%;
       position: absolute;
-      top: 0;
-      left: 0;
-      .slider-item {
+      list-style: none;
+      .slider {
         width: 100%;
         height: 100%;
       }

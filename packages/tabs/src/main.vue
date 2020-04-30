@@ -1,6 +1,6 @@
 <template>
   <div class="vuie-tabs-container">
-    <ul>
+    <ul class="no-select">
       <li
         v-for="(tab, index) in tabs"
         :key="index"
@@ -69,7 +69,6 @@ export default {
       const indicator = this.$refs.indicator
       const tab = this.$.get('li', this.actived)
       const margin = parseInt(this.$.css(tab, 'marginLeft'))
-      const left = `${tab.offsetLeft - margin}px`
       this.$.animate(indicator, {
         width: (tab.clientWidth + margin * 2),
         left: tab.offsetLeft - margin
