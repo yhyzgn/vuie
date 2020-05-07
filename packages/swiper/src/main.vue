@@ -72,10 +72,6 @@ export default {
       height: 100%;
       position: absolute;
       list-style: none;
-      .slider {
-        width: 100%;
-        height: 100%;
-      }
     }
   }
 }
